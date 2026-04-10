@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pusgcc@d+m98&oj3rnrvf9g1k5ud1698a0-_$etc)&r1&moyah'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True        # 生产环境请改为False,开发模式请改为True
 
 ALLOWED_HOSTS = []
 
@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'web',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -114,28 +118,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
-# 注册app
-INSTALLED_APPS = [
-    ...,
-    'rest_framework',
-    'web',
-    'corsheaders',
-]
-
-# 加入跨域中间件
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # 必须尽量靠前
-    ...
-]
-
-...
-
-# 设置成中国时区
-TIME_ZONE = 'Asia/Shanghai'
-
-...
 
 # 设置static和media静态文件路径
 STATIC_URL = 'static/'
@@ -147,21 +129,6 @@ STATICFILES_DIRS = [  # 开发阶段使用，生产阶段需要注释掉
 
 MEDIA_URL = 'http://127.0.0.1:8000/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-...
-
-# 设置static和media静态文件路径
-STATIC_URL = 'static/'
-# STATIC_ROOT = BASE_DIR / 'static'  # 生产阶段使用
-
-STATICFILES_DIRS = [  # 开发阶段使用，生产阶段需要注释掉
-    BASE_DIR / 'static',
-]
-
-MEDIA_URL = 'http://127.0.0.1:8000/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-...
 
 # 使用JWT认证
 from datetime import timedelta
