@@ -26,7 +26,6 @@ async function handleLogout(){
       })
     }
   } catch (err) {
-    console.log(err)
   }
 }
 </script>
