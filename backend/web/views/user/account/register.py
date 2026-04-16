@@ -26,7 +26,7 @@ class RegisterView(APIView):
                 "result": "success",
                 "access": str(refresh.access_token),
                 "user_id": user.id,
-                "user_name": user.username,
+                "username": user.username,
                 "photo": user_profile.photo.url,  # 必须加url
                 "profile": user_profile.profile
             })
