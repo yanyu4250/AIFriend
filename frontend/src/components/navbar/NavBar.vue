@@ -3,7 +3,7 @@
 import MenuIcon from "@/components/navbar/icons/MenuIcon.vue";
 import HomepageIcon from "@/components/navbar/icons/HomepageIcon.vue";
 import FriendIcon from "@/components/navbar/icons/FriendIcon.vue";
-import CameraIcon from "@/components/navbar/icons/CameraIcon.vue";
+import CameraIcon from "@/views/user/profile/components/icon/CameraIcon.vue";
 import CreatIcon from "@/components/navbar/icons/CreatIcon.vue";
 import SearchIcon from "@/components/navbar/icons/SearchIcon.vue";
 import { useUserStore } from "@/stores/user.js"
