@@ -9,7 +9,7 @@ from web.models.character import Character
 from web.views.utils.photo import remove_old_photo
 
 
-class UpdatateCharacterView(APIView):
+class UpdateCharacterView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self,request):
         try:
