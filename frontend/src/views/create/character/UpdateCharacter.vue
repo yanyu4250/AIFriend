@@ -64,8 +64,7 @@ async function handleUpdate(){
     if (backgroundImage !== character.value.background_image) {
       formData.append('background_image', base64ToFile(backgroundImage,'background_image.png'))
     }
-    formData.append('photo', base64ToFile(photo,'photo.png'))
-    formData.append('background_image', base64ToFile(backgroundImage,'background_image.png'))
+
 
     try {
       const res = await api.post('api/create/character/update/',formData)
