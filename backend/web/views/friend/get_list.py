@@ -18,15 +18,18 @@ class GetLIstFriendView(APIView):
                 character = friend.character
                 author = character.author
                 friends.append({
-                    'id':character.id,
-                    'name':character.name,
-                    'profile':character.profile,
-                    'background_image':character.background_image.url,
-                    'photo':character.photo.url,
-                    'author':{
-                        'user_id':author.user_id,
-                        'username':author.user.username,
-                        'photo':author.photo.url,
+                    'id': friend.id,
+                    'character': {
+                        'id': character.id,
+                        'name': character.name,
+                        'profile': character.profile,
+                        'background_image': character.background_image.url,
+                        'photo': character.photo.url,
+                        'author': {
+                            'user_id': author.user_id,
+                            'username': author.user.username,
+                            'photo': author.photo.url,
+                        }
                     }
                 })
             return Response({
