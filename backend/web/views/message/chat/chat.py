@@ -59,7 +59,7 @@ class MessageChatView(APIView):
                 friend=friend,
                 user_message=message[:500],
                 input=json.dumps(
-                    [ m.model_dump() for m in inputs['messages']],
+                    [m.model_dump() for m in inputs['messages']],
                     ensure_ascii= False,
                 )[:10000],
                 output=full_output[:500],
