@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 from typing import TypedDict, Annotated, Sequence
 
 from django.utils.timezone import localtime, now
@@ -41,7 +40,6 @@ class ChatGraph:
             return {'messages':[res]}
 
         def should_continue(state: AgentState) -> str:
-            pprint(state)
             last_message = state['messages'][-1]
             if last_message.tool_calls:
                 return "tools"
