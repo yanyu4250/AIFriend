@@ -83,6 +83,7 @@ class MessageChatView(APIView):
             content_type='text/event-stream'
         )
         response['Cache-Control'] = 'no-cache'
+        response['X-Accel-Buffering'] = 'no'
         return  response
 
     async def tts_sender(self,app,inputs,mq,ws,task_id):
@@ -103,7 +104,7 @@ class MessageChatView(APIView):
                     }))
                     mq.put_nowait({'content': msg.content})
                 if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
-                    mq.put_nopwait({'usage': msg.usage_metadata})
+                    mq.put_nowait({'usage': msg.usage_metadata})
         await ws.send(json.dumps({
             "header": {
                 "action": "finish-task",
