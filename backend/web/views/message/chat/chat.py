@@ -211,4 +211,3 @@ class MessageChatView(APIView):
         )
         if Message.objects.filter(friend=friend).count() % 1 == 0:
             update_memory(friend)
-

@@ -123,7 +123,7 @@ async function handleSend(event,audio_msg) {
   emit('pushBackMessage',{role:'ai', content:'', id:crypto.randomUUID()})
 
   try {
-    await streamApi('api/friend/message/chat/',{
+    await streamApi('/api/friend/message/chat/',{
       body: {
         friend_id: props.friendId,
         message: content,
