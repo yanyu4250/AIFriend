@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+import mimetypes
+
+mimetypes.add_type("application/javascript", ".js", True)
 
 load_dotenv()
 
@@ -26,9 +29,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pusgcc@d+m98&oj3rnrvf9g1k5ud1698a0-_$etc)&r1&moyah'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True        # 生产环境请改为False,开发模式请改为True
+DEBUG = False    # 生产环境请改为False,开发模式请改为True
 
 ALLOWED_HOSTS = ['127.0.0.1','app7683.acapp.acwing.com.cn']
+
+
 
 
 # Application definition

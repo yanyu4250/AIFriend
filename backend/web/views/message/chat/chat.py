@@ -4,14 +4,12 @@ import json
 import os
 import threading
 import uuid
-from idlelib.query import Query
 from queue import Queue
 
 from langchain_core.messages import BaseMessageChunk
 import websockets
 from django.http import StreamingHttpResponse
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from openai import api_key
 from rest_framework.renderers import BaseRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
