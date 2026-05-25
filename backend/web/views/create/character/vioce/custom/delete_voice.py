@@ -1,0 +1,19 @@
+import os
+
+import requests
+
+
+def delete_voice(voice_id):
+    headers = {
+        "Authorization": f"Bearer {os.getenv('API_KEY')}",
+        "content-Type":"application/json",
+    }
+    data = {
+        "model": "voice-enrollment",
+        "input": {
+            "action": "create_voice",
+            "voice_id": voice_id,
+        }
+    }
+    response = requests.post(url=os.getenv('VOICE_URL'),headers=headers,json=data)
+    return response.json()
