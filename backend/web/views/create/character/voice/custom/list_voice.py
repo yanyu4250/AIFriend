@@ -3,7 +3,7 @@ import os
 import requests
 
 
-def list_voice(voice_url,prefix):
+def list_voice():
     headers = {
         "Authorization": f"Bearer {os.getenv('API_KEY')}",
         "content-Type":"application/json",
@@ -11,7 +11,7 @@ def list_voice(voice_url,prefix):
     data = {
         "model": "voice-enrollment",
         "input": {
-            "action": "create_voice",
+            "action": "list_voice",
             "page_size": 100,
             "page_index": 0,
         }

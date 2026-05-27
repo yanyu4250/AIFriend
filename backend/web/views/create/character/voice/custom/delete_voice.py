@@ -11,7 +11,7 @@ def delete_voice(voice_id):
     data = {
         "model": "voice-enrollment",
         "input": {
-            "action": "create_voice",
+            "action": "delete_voice",
             "voice_id": voice_id,
         }
     }

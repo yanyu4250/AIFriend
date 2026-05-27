@@ -6,7 +6,7 @@ from web.views.create.character.get_list import GetListCharacterView
 from web.views.create.character.get_single import  GetSingleCharacterView
 from web.views.create.character.remove import RemoveCharacterView
 from web.views.create.character.update import UpdateCharacterView
-from web.views.create.character.vioce.get_list import GetVoiceList
+from web.views.create.character.voice.get_list import GetVoiceList
 from web.views.friend.get_list import GetLIstFriendView
 from web.views.friend.get_or_create import GetOrCreateFriendView
 from web.views.friend.remove import RemoveFriendView
