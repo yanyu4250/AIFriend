@@ -17,6 +17,9 @@ from web.views.message.chat.chat import MessageChatView
 from web.views.message.get_history import GetHistoryView
 from web.views.user.account.get_user_info import GetUserInfoView
 
+from web.views.knowledge.document.list import ListDocumentView
+from web.views.knowledge.document.remove import RemoveDocumentView
+from web.views.knowledge.document.upload import UploadDocumentView
 from web.views.user.account.login import LoginView
 from web.views.user.account.logout import LogoutView
 from web.views.user.account.refresh_token import RefreshTokenView
@@ -43,6 +46,9 @@ urlpatterns = [
     path('api/friend/message/chat/',MessageChatView.as_view()),
     path('api/friend/message/get_history/',GetHistoryView.as_view()),
     path('api/friend/message/asr/asr/',ASRView.as_view()),
+    path('api/knowledge/document/upload/',UploadDocumentView.as_view()),
+    path('api/knowledge/document/list/',ListDocumentView.as_view()),
+    path('api/knowledge/document/remove/',RemoveDocumentView.as_view()),
     path('',index),
     re_path(r'^(?!media/|static/|assets/).*$', index)
 ]

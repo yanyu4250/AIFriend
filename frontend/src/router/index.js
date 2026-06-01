@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomepageIndex from "@/views/homepage/HomepageIndex.vue";
 import FriendIndex from "@/views/friend/FriendIndex.vue";
 import CreateIndex from "@/views/create/CreateIndex.vue";
+import KnowledgeIndex from "@/views/knowledge/KnowledgeIndex.vue";
 import NotFoundIndex from "@/views/error/NotFoundIndex.vue";
 import LoginIndex from "@/views/user/account/LoginIndex.vue";
 import RegisterIndex from "@/views/user/account/RegisterIndex.vue";
@@ -44,6 +45,14 @@ const router = createRouter({
       name : 'update-character',
       meta : {
         needLogin : true,
+      }
+    },
+    {
+      path: '/knowledge/',
+      component: KnowledgeIndex,
+      name: 'knowledge-index',
+      meta: {
+        needLogin: true,
       }
     },
     {

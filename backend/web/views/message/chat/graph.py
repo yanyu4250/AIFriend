@@ -2,6 +2,7 @@ import os
 from typing import TypedDict, Annotated, Sequence
 
 import lancedb
+from django.conf import settings
 from django.db import connection
 from django.utils.timezone import localtime, now
 from langchain_community.vectorstores import LanceDB
@@ -26,15 +27,22 @@ class ChatGraph:
 
         @tool
         def search_knowledge_base(query: str) -> str:
-            """当用户查询阿里云百炼平台的相关信息，调用此函数。输入为要查询的问题，输出为查询结果"""
-            db = lancedb.connect('./web/documents/lancedb_storage')
+            """当用户问到任何关于文档、文件、资料、知识相关的问题时，必须调用此函数搜索知识库。
+            比如用户问"文档里说了什么"、"我上传的文件里有什么"、"知识库里有没有关于X的内容"等，
+            都应该用这个函数查询。输入为要查询的问题，输出为知识库中检索到的相关内容。"""
+            lancedb_path = os.path.join(settings.BASE_DIR, 'web', 'documents', 'lancedb_storage')
+            db = lancedb.connect(lancedb_path)
+            if 'my_knowledge_base' not in db.table_names():
+                return '知识库中暂无文档，请先上传文档。'
             embeddings = CustomEmbeddings()
             vector_db = LanceDB(
                 connection=db,
                 embedding=embeddings,
                 table_name='my_knowledge_base',
             )
-            docs = vector_db.similarity_search(query,k=3)
+            docs = vector_db.similarity_search(query, k=3)
+            if not docs:
+                return '未在知识库中找到与问题相关的内容。'
             context = '\n\n'.join([f'内容片段：{i + 1}\n{doc.page_content}' for i, doc in enumerate(docs)])
             return f'从知识库中找到以下相关信息：\n\n{context}\n'
 

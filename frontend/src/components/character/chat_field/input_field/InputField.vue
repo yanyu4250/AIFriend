@@ -20,9 +20,10 @@ let audioQueue = [];           // 待写入 Buffer 的二进制队列
 let isUpdating = false;        // Buffer 是否正在写入
 
 const initAudioStream = () => {
-    audioPlayer.pause();
+    stopAudio();
     audioQueue = [];
     isUpdating = false;
+    sourceBuffer = null;
 
     mediaSource = new MediaSource();
     audioPlayer.src = URL.createObjectURL(mediaSource);
@@ -46,6 +47,9 @@ const processQueue = () => {
     if (isUpdating || audioQueue.length === 0 || !sourceBuffer || sourceBuffer.updating) {
         return;
     }
+    if (!mediaSource || mediaSource.readyState !== 'open') {
+        return;
+    }
 
     isUpdating = true;
     const chunk = audioQueue.shift();
@@ -61,6 +65,7 @@ const stopAudio = () => {
     audioPlayer.pause();
     audioQueue = [];
     isUpdating = false;
+    sourceBuffer = null;
 
     if (mediaSource) {
         if (mediaSource.readyState === 'open') {

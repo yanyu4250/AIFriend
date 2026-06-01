@@ -4,6 +4,7 @@ import HomepageIcon from "@/components/navbar/icons/HomepageIcon.vue";
 import FriendIcon from "@/components/navbar/icons/FriendIcon.vue";
 import CameraIcon from "@/views/user/profile/components/icon/CameraIcon.vue";
 import CreatIcon from "@/components/navbar/icons/CreatIcon.vue";
+import KnowledgeIcon from "@/components/navbar/icons/KnowledgeIcon.vue";
 import SearchIcon from "@/components/navbar/icons/SearchIcon.vue";
 import { useUserStore } from "@/stores/user.js"
 import UserMenu from "@/components/navbar/UserMenu.vue";
@@ -89,6 +90,14 @@ function handleSearch() {
             <CreatIcon />
             <span class="is-drawer-close:hidden text-base ml-2 whitespace-nowrap">
               创作
+            </span>
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink :to ="{name:'knowledge-index'}" active-class="menu-focus" class="is-drawer-close:tooltip is-drawer-close:tooltip-right py-3" data-tip="知识库">
+            <KnowledgeIcon />
+            <span class="is-drawer-close:hidden text-base ml-2 whitespace-nowrap">
+              知识库
             </span>
           </RouterLink>
         </li>

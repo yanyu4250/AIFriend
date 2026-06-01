@@ -35,6 +35,7 @@ def add_system_prompt(state,friend):
         prompt += sp.prompt
     prompt += f'\n【角色性格】\n{friend.character.profile}'
     prompt += f'【长期记忆】\n{friend.memory}\n'
+    prompt += '\n【知识库】你可以使用 search_knowledge_base 工具查询用户上传的文档内容。当用户问到文档相关问题时必须调用该工具。\n'
     return {'messages': [SystemMessage(prompt)] + msgs}
 
 def add_recent_messages(state,friend):
